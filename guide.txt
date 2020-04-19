@@ -24,6 +24,17 @@ $filter,
 $out				(Aggregation_cleaning)
 $addFields
 $arrayElemAt        (check cleaning using aggregation)
+
+$lookup---
+used for Joins
+{
+	'$lookup':{
+		from:"db2.Name",
+		localField:"localkey"
+		foreignField:"foreignKey"
+		as:"db2docs"
+		}
+}		
  
 
 Queries:
@@ -77,6 +88,11 @@ db.col.create_index([{"key",pymongo.ASCENDING}])
 indexes for text search support can be used , which do not need to match exact values
 if the index has been set up
 filter={ "$text":{"$search":"Titanic"}}
+You can then sort using '$meta':'textScore'
+
+
+
+
 
 
 Geospatial Queries
